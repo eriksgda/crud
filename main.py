@@ -1,7 +1,11 @@
-from functions import menu, menu_operations, operation, include
+from functions.menus import menu, menu_operations, operation
+from functions.create import create
+from functions.read import read
+from functions.update import update
+from functions.delete import delete
 
 
-v_choice = {
+dict_choice = {
   0: 'Finalizando Aplicação...',
   1: 'ESTUDANTES',
   2: 'PROFESSORES',
@@ -10,7 +14,7 @@ v_choice = {
   5: 'MATRÍCULAS'
 }
 
-v_choice_op = {
+dict_choice_op = {
    0: 'Operação não adicionada...',
    1: 'INCLUIR',
    2: 'LISTAR',
@@ -19,30 +23,30 @@ v_choice_op = {
    5: 'VOLTAR AO MENU'
 }
 
-lista_op ={
-1: [],
-2: [],
-3: [],
-4: [],
-5: []
-}
+data_dict = {
+  'estudantes' : [],
+  'professores': [],
+  'disciplinas': [],
+  'turmas': [], 
+  'matriculas': []
 
+}
 
 while True: # loop do menu
   choice = menu()  # escolha principal
   
-  while choice not in v_choice:  # verificação se é um valor aceito
+  while choice not in dict_choice:  # verificação se é um valor aceito
     choice = menu()
     
   if choice == 0:     # verificação se é 0 para encerramento do programa
-    print(v_choice[choice])
+    print(dict_choice[choice])
     break
   
   while True:   # loop do menu de operações
-    choice_op = menu_operations(v_choice, choice)  # escolha da operação
+    choice_op = menu_operations(dict_choice, choice)  # escolha da operação
 
-    while choice_op not in v_choice_op:  # verificação se é um valor aceito
-        choice_op = menu_operations(v_choice, choice)
+    while choice_op not in dict_choice_op:  # verificação se é um valor aceito
+        choice_op = menu_operations(dict_choice, choice)
 
     if choice_op == 0:  # verificação se é 0 para encerramento do programa
       break
@@ -51,29 +55,47 @@ while True: # loop do menu
     while continuar == 1: # loop que contem cada operação
       match(choice_op):
         case 1: # incluir
-          operation(v_choice_op, choice_op)
-          include(choice, v_choice, lista_op)
+          operation(dict_choice_op, choice_op)
+          create(choice, dict_choice, data_dict)
+          print()
+
         case 2: # listar
-          operation(v_choice_op, choice_op)
-          lista_op[choice].sort()
-          count = 1
-          print(f'/////////// [{v_choice[choice]}] ///////////')
-          for i in lista_op[choice]:
-            print(f'N°{count}: {i}')
-            count += 1
+          operation(dict_choice_op, choice_op)
+          read(choice, dict_choice, data_dict)
+          print()
+
         case 3: # atualizar
-          operation(v_choice_op, choice_op)
-          print('EM DESENVOLVIMENTO...')
-          break
+          operation(dict_choice_op, choice_op)
+          try:
+            choice_update = int(input('O que deseja alterar:\n' 
+                            '[0] Nome do Estudante\n'
+                            '[1] CPF do Estudante\nR:  ').strip())
+          except:
+            print('Valor inválido!')
+            break
+          print()
+          read(choice, dict_choice, data_dict)
+          print()
+          update(choice_update, data_dict)
+          print()
+
         case 4: # excluir
-          operation(v_choice_op, choice_op)
-          print('EM DESENVOLVIMENTO...')
-          break
+          operation(dict_choice_op, choice_op)
+          read(choice, dict_choice, data_dict)
+          try:
+            choice_code = int(input('Digite o código do aluno que deseja excluir: '))
+          except:
+            print('Valor inválido!')
+            break
+          print()
+          delete(choice_code, data_dict)  
+          print()  
+
         case 5: # voltar ao menu
-          operation(v_choice_op, choice_op)
+          operation(dict_choice_op, choice_op)
           break       
       continuar = input('Digite 1 para continuar no menu de operações ' 
-                          f'[{v_choice_op[choice_op]}] e 0 para voltar ao menu [{v_choice[choice]}]\nR: ').strip()
+                          f'[{dict_choice_op[choice_op]}] e 0 para voltar ao menu [{dict_choice[choice]}]\nR: ').strip()
       if continuar == '1' or continuar == '0': # vereficação da variavel 'continuar'
         continuar = int(continuar)
       else:
@@ -84,7 +106,7 @@ while True: # loop do menu
       break
 
   if choice_op == 0: # verificação se deve encerrar o programa
-    print(v_choice[choice_op])
+    print(dict_choice[choice_op])
     break
   else:
     continue
