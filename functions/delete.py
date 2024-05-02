@@ -1,3 +1,4 @@
+import json
 from crud.functions.json.read_json import readJson
 
 def delete(choice_code:int, choice:int, dict_choice:dict):
@@ -26,12 +27,15 @@ def delete(choice_code:int, choice:int, dict_choice:dict):
           return print('Valor Inválido!')
         
         if delete == 0:
-          print(f'O aluno {i['nome']} não será excluído!')
+          print(f'O(A) aluno(a) {i['nome']} não será excluído!')
           break
         else:
           index = datas_json.index(i)
           datas_json.pop(index)
-          print(f'O aluno {i['nome']} foi excluído!')
+          with open(file_name + '.json', 'w') as file:
+            json.dump(datas_json, file, ensure_ascii=False)
+            file.close()
+          print(f'O(A) aluno(a) {i['nome']} foi excluído!')
 
        
           
