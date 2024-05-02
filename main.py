@@ -23,15 +23,6 @@ dict_choice_op = {
    5: 'VOLTAR AO MENU'
 }
 
-data_dict = {
-  'estudantes' : [],
-  'professores': [],
-  'disciplinas': [],
-  'turmas': [], 
-  'matriculas': []
-
-}
-
 while True: # loop do menu
   choice = menu()  # escolha principal
   
@@ -56,12 +47,12 @@ while True: # loop do menu
       match(choice_op):
         case 1: # incluir
           operation(dict_choice_op, choice_op)
-          create(choice, dict_choice, data_dict)
+          create(choice, dict_choice)
           print()
 
         case 2: # listar
           operation(dict_choice_op, choice_op)
-          read(choice, dict_choice, data_dict)
+          read(choice, dict_choice)
           print()
 
         case 3: # atualizar
@@ -74,21 +65,21 @@ while True: # loop do menu
             print('Valor inválido!')
             break
           print()
-          read(choice, dict_choice, data_dict)
+          read(choice, dict_choice)
           print()
-          update(choice_update, data_dict)
+          update(choice_update, choice, dict_choice)
           print()
 
         case 4: # excluir
           operation(dict_choice_op, choice_op)
-          read(choice, dict_choice, data_dict)
+          read(choice, dict_choice)
           try:
             choice_code = int(input('Digite o código do aluno que deseja excluir: '))
           except:
             print('Valor inválido!')
             break
           print()
-          delete(choice_code, data_dict)  
+          delete(choice_code, choice, dict_choice)    
           print()  
 
         case 5: # voltar ao menu

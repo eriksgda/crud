@@ -1,6 +1,10 @@
-# penso em criar uma função apra cada uma das opções, ou ter apenas uma função com varios cases 
+# penso em criar uma função apra cada uma das opções, ou ter apenas uma função com varios cases
+import json
+from crud.functions.json.read_json import readJson
 
-def create(choice:int, dict_choice:dict, data_dict:dict): # função que adiciona (incluir) nas listas
+def create(choice:int, dict_choice:dict): # função que adiciona (incluir) nas listas
+  file_name = dict_choice[choice].lower()
+  datas_json = readJson(file_name)
   match choice:
     case 1:
       try: # verificação da resposta
@@ -13,11 +17,14 @@ def create(choice:int, dict_choice:dict, data_dict:dict): # função que adicion
               student = input('Nome do Estudante: ').strip()
               cpf = int(input('Digite o cpf: ').strip())
               print()
-              data_dict['estudantes'].append({
+              datas_json.append({
                 'codigo':code, 
                 'nome' : student,
                 'cpf' : cpf
                 })
+              with open(file_name + '.json', 'w') as file:
+                json.dump(datas_json, file, ensure_ascii=False)
+                file.close()
             except:
               return print('Valor Inválido!\n')
       except:

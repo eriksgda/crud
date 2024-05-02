@@ -1,4 +1,8 @@
-def read(choice:int, dict_choice:dict, dictt:dict):
+from crud.functions.json.read_json import readJson
+
+def read(choice:int, dict_choice:dict):
+  file_name = dict_choice[choice].lower()
+  data_json = readJson(file_name)
   print(f'--------------- [{dict_choice[choice]}] ---------------')
-  for i in dictt['estudantes']:
-    print(f'{i['codigo']:<5}{i['nome']:^30}{i['cpf']:<5}')
+  for student in data_json:
+    print(f'{student['codigo']:<5}{student['nome']:^30}{student['cpf']:<5}')
