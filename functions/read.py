@@ -27,6 +27,6 @@ def read(choice:int, dict_choice:dict):
     file_name = dict_choice[choice].lower()
     data_json = readJson(file_name)
     print(f'--------------- [{dict_choice[choice]}] ---------------')
-    print('Cod. Turmas              Cod. Estudantes')
+    print('Cod. Turmas              Cod. Estudantes          Nome Estudante')
     for x in data_json:
       print(f'{x['codigo_c']:<5}{x['codigo_s']:^30}')
