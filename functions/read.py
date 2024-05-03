@@ -1,7 +1,7 @@
 from crud.functions.json.read_json import readJson
 
 def read(choice:int, dict_choice:dict):
-  if choice != 5 and choice != 4 and choice !=3:
+  if choice == 1 or choice == 2:
     file_name = dict_choice[choice].lower()
     data_json = readJson(file_name)
     print(f'--------------- [{dict_choice[choice]}] ---------------')

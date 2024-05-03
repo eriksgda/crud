@@ -1,9 +1,9 @@
 import json
 from crud.functions.json.read_json import readJson
 
-def classes(choice:int, dict_choice:dict, file_name, datas_json):
+def classes(file_name:str, datas_json:list):
   try: # verificação da resposta
-    ask = int(input(f'Quantos(as) {dict_choice[choice]} deseja adicionar?\nR: '))
+    ask = int(input(f'Quantas TURMAS deseja adicionar?\nR: '))
     print()
     if ask.is_integer():
       for _ in range(ask):
@@ -12,21 +12,21 @@ def classes(choice:int, dict_choice:dict, file_name, datas_json):
           for i in datas_json:
             values  += i.values()
 
-          code_class = int(input(f'Código da {dict_choice[choice].lower()}: ').strip())
+          code_class = int(input('Código da turma: ').strip())
           if code_class in values:
             return print('Código já incluso!')
           
           values = []
           for i in readJson('professores'):
             values += i.values()
-          code_teacher = int(input(f'Código da {dict_choice[choice - 2].lower()}: ').strip())
+          code_teacher = int(input('Código do(a) professor(a): ').strip())
           if code_teacher not in values:
             return print('Código do(a) professor(a) inexistente!')
           
           values = []
           for i in readJson('disciplinas'):
             values += i.values()
-          code_discipline = int(input(f'Código da {dict_choice[choice - 1].lower()}: ').strip())
+          code_discipline = int(input('Código da disciplina: ').strip())
           if code_discipline not in values:
             return print('Código da disciplina inexistente!')
           

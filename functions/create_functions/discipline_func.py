@@ -1,8 +1,8 @@
 import json
 
-def discipline(choice:int, dict_choice:dict, file_name, datas_json):
+def discipline(file_name:str, datas_json:list):
   try: # verificação da resposta
-    ask = int(input(f'Quantos(as) {dict_choice[choice]} deseja adicionar?\nR: '))
+    ask = int(input(f'Quantas DISCIPLINAS deseja adicionar?\nR: '))
     print()
     if ask.is_integer():
       for _ in range(ask):
@@ -11,11 +11,11 @@ def discipline(choice:int, dict_choice:dict, file_name, datas_json):
           for i in datas_json :
             values  += i.values()
 
-          code = int(input(f'Código da {dict_choice[choice].lower()}: ').strip())
+          code = int(input('Código da disciplina: ').strip())
           if code in values:
             return print('Código já incluso!')
           
-          name = input(f'Nome da {dict_choice[choice].lower()}: ').strip()
+          name = input('Nome da disciplina: ').strip()
           if code in values or not name:
             return print('Nome já incluso!')
           

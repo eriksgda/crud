@@ -11,11 +11,11 @@ def student_and_teacher(choice:int, dict_choice:dict, file_name, datas_json):
           for i in datas_json :
             values  += i.values()
 
-          code = int(input(f'Código do {dict_choice[choice].lower()}: ').strip())
+          code = int(input(f'Código do(a) {dict_choice[choice].lower()}: ').strip())
           if code in values:
             return print('Código já incluso!')
           
-          name = input(f'Nome do {dict_choice[choice].lower()}: ').strip()
+          name = input(f'Nome do(a) {dict_choice[choice].lower()}: ').strip()
           if name in values or not name:
             return print('Nome já incluso ou em branco!')
           

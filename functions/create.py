@@ -12,13 +12,12 @@ def create(choice:int, dict_choice:dict): # função que adiciona (incluir) nas 
     case 1:
       student_and_teacher(choice, dict_choice, file_name, datas_json)
     case 2:
-      student_and_teacher(choice, dict_choice, file_name, datas_json)
+      student_and_teacher(file_name, datas_json)
     case 3:
-      discipline(choice, dict_choice, file_name, datas_json)
+      discipline(file_name, datas_json)
     case 4:
-      classes(choice, dict_choice, file_name, datas_json)
+      classes(file_name, datas_json)
     case 5:
-      admission(choice, dict_choice, file_name, datas_json)
+      admission(file_name, datas_json)
     case _:
       print('EM DESENVOLVIMENTO...')
-  return None

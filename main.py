@@ -23,6 +23,10 @@ dict_choice_op = {
    5: 'VOLTAR AO MENU'
 }
 
+def read_turma():
+  read(2, dict_choice)
+  read(3, dict_choice)
+
 while True: # loop do menu
   choice = menu()  # escolha principal
   
@@ -46,6 +50,11 @@ while True: # loop do menu
     while continuar == 1: # loop que contem cada operação
       match(choice_op):
         case 1: # incluir
+          if choice == 5:
+            read(1, dict_choice)
+            read_turma()
+          elif choice == 4:
+            read_turma()            
           operation(dict_choice_op, choice_op)
           create(choice, dict_choice)
           print()

@@ -1,9 +1,9 @@
 import json
 from crud.functions.json.read_json import readJson  
 
-def admission(choice:int, dict_choice:dict, file_name, datas_json):
+def admission(file_name:str, datas_json:list):
   try: # verificação da resposta
-    ask = int(input(f'Quantos(as) {dict_choice[choice]} deseja adicionar?\nR: '))
+    ask = int(input('Quantas MATRÍCULAS deseja adicionar?\nR: '))
     print()
     if ask.is_integer():
       for _ in range(ask):
