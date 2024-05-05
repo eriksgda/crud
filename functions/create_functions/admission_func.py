@@ -9,24 +9,32 @@ def admission(file_name:str, datas_json:list):
       for _ in range(ask):
         try:
           values = []
+          for i in datas_json:
+            values.append(i['codigo_m'])
+          code_admission = int(input('Código da Matrícula: ').strip())
+          if code_admission in values:
+            return print('Código em uso!')
+          
+          values = []
           for i in readJson('turmas'):
-            values += i.values()
+            values.append(i['codigo'])
           code_classes = int(input('Código da turma: ').strip())
           if code_classes not in values:
             return print('Código da turma inexistente!')
           
           values = []
           for i in readJson('estudantes'):
-            values += i.values()
+            values.append(i['codigo'])
 
           code_student = int(input('Código do(a) estudante: ').strip())
           if code_student not in values:
-            return print('Código do(a) estudante!')
+            return print('Código do(a) estudante inexistente!')
           
           print()
           datas_json.append({
-            'codigo_c' : code_classes,
-            'codigo_s' : code_student
+            'codigo' : code_admission,
+            'codigo_turma' : code_classes,
+            'codigo_estudante' : code_student
           })
           with open(file_name + '.json', 'w') as file:
             json.dump(datas_json, file, ensure_ascii=False)

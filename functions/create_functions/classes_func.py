@@ -10,7 +10,7 @@ def classes(file_name:str, datas_json:list):
         try:
           values= []
           for i in datas_json:
-            values  += i.values()
+            values.append(i['codigo'])
 
           code_class = int(input('Código da turma: ').strip())
           if code_class in values:
@@ -18,23 +18,23 @@ def classes(file_name:str, datas_json:list):
           
           values = []
           for i in readJson('professores'):
-            values += i.values()
+            values.append(i['codigo'])
           code_teacher = int(input('Código do(a) professor(a): ').strip())
           if code_teacher not in values:
             return print('Código do(a) professor(a) inexistente!')
           
           values = []
           for i in readJson('disciplinas'):
-            values += i.values()
+            values.append(i['codigo'])
           code_discipline = int(input('Código da disciplina: ').strip())
           if code_discipline not in values:
             return print('Código da disciplina inexistente!')
           
           print()
           datas_json.append({
-            'codigo_c':code_class, 
-            'codigo_t' : code_teacher,
-            'codigo_d' : code_discipline,
+            'codigo':code_class, 
+            'codigo_prof' : code_teacher,
+            'codigo_disciplina' : code_discipline,
           })
           with open(file_name + '.json', 'w') as file:
             json.dump(datas_json, file, ensure_ascii=False)

@@ -7,9 +7,9 @@ def read_class(data_json:list):
   print('Cod.               Nome             Nome\n'
         'Turma           Professores        Disciplinas')
   for x in data_json:
-    cod_turma = x['codigo_c'] 
-    cod_professor = x['codigo_t'] 
-    cod_disciplina = x['codigo_d']
+    cod_turma = x['codigo'] 
+    cod_professor = x['codigo_prof'] 
+    cod_disciplina = x['codigo_disciplina']
     for xx in data_t:
       if xx['codigo'] == cod_professor:
         index_prof = data_t.index(xx)

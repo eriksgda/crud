@@ -3,6 +3,8 @@ from crud.functions.create import create
 from functions.read import read
 from functions.update import update
 from functions.delete import delete
+from crud.functions.read_functions.read_classes import read_class
+from crud.functions.json.read_json import readJson
 
 
 dict_choice = {
@@ -22,10 +24,6 @@ dict_choice_op = {
    4: 'EXCLUIR',
    5: 'VOLTAR AO MENU'
 }
-
-def read_turma():
-  read(2, dict_choice)
-  read(3, dict_choice)
 
 while True: # loop do menu
   choice = menu()  # escolha principal
@@ -52,9 +50,9 @@ while True: # loop do menu
         case 1: # incluir
           if choice == 5:
             read(1, dict_choice)
-            read_turma()
+            read_class(readJson('turmas'))
           elif choice == 4:
-            read_turma()            
+            read_class(readJson('turmas'))
           operation(dict_choice_op, choice_op)
           create(choice, dict_choice)
           print()
