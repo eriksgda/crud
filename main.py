@@ -49,20 +49,29 @@ while True: # loop do menu
       match(choice_op):
         case 1: # incluir
           if choice == 5:
+            print()
             read(1, dict_choice)
+            print()
             read_class(readJson('turmas'))
+            print()
           elif choice == 4:
-            read_class(readJson('turmas'))
+            print()
+            read(2, dict_choice)
+            print()
+            read(3, dict_choice)
+            print()
           operation(dict_choice_op, choice_op)
           create(choice, dict_choice)
           print()
 
         case 2: # listar
+          print()
           operation(dict_choice_op, choice_op)
           read(choice, dict_choice)
           print()
 
         case 3: # atualizar
+          print()
           operation(dict_choice_op, choice_op)
           try:
             choice_update = int(input('O que deseja alterar:\n' 
@@ -78,10 +87,12 @@ while True: # loop do menu
           print()
 
         case 4: # excluir
+          print()
           operation(dict_choice_op, choice_op)
           read(choice, dict_choice)
           try:
-            choice_code = int(input('Digite o código do aluno que deseja excluir: '))
+            print()
+            choice_code = int(input(f'Digite o código de {dict_choice[choice]} que deseja excluir: '))
           except:
             print('Valor inválido!')
             break

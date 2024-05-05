@@ -5,12 +5,11 @@ def admission(file_name:str, datas_json:list):
   try: # verificação da resposta
     ask = int(input('Quantas MATRÍCULAS deseja adicionar?\nR: '))
     print()
-    if ask.is_integer():
-      for _ in range(ask):
+    for _ in range(ask):
         try:
           values = []
           for i in datas_json:
-            values.append(i['codigo_m'])
+            values.append(i['codigo'])
           code_admission = int(input('Código da Matrícula: ').strip())
           if code_admission in values:
             return print('Código em uso!')
@@ -25,7 +24,6 @@ def admission(file_name:str, datas_json:list):
           values = []
           for i in readJson('estudantes'):
             values.append(i['codigo'])
-
           code_student = int(input('Código do(a) estudante: ').strip())
           if code_student not in values:
             return print('Código do(a) estudante inexistente!')
