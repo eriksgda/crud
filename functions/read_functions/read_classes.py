@@ -3,9 +3,8 @@ from crud.functions.json.read_json import readJson
 def read_class(data_json:list):
   data_t = readJson('professores')
   data_d = readJson('disciplinas')
-  print(f'--------------- [TURMAS] ---------------')
-  print('Cod.               Nome             Nome\n'
-        'Turma           Professores        Disciplinas')
+  print(f'------------------------- [TURMAS] -------------------------')
+  print(f'Cod. Turma            Professores / Cod.         Disciplinas / Cod')
   for x in data_json:
     cod_turma = x['codigo'] 
     cod_professor = x['codigo_prof'] 
@@ -26,12 +25,16 @@ def read_class(data_json:list):
 
     menssagem = 'Excluído/Não encontrado'
     if index_prof == None and index_disciplina != None:
-      print(f'{cod_turma:<5}{menssagem:^30}{data_d[index_disciplina]['nome']:<5}')
+      disciplina = data_d[index_disciplina]['nome'] + ' / ' + str(cod_disciplina)
+      print(f'{cod_turma:>5}{menssagem:^50}{disciplina}')
     elif index_disciplina == None and index_prof != None:
-      print(f'{cod_turma:<5}{data_t[index_prof]['nome']:^30}{menssagem:<5}')
+      professor = data_t[index_prof]['nome'] + ' / ' + str(cod_professor)
+      print(f'{cod_turma:>5}{professor:^50}{menssagem}')
     elif index_prof == None and index_disciplina == None:
-      print(f'{cod_turma:<5}{menssagem:^30}{menssagem:<5}')
+      print(f'{cod_turma:>5}{menssagem:^50}{menssagem}')
     else:
-      print(f'{cod_turma:<5}{data_t[index_prof]['nome']:^30}{data_d[index_disciplina]['nome']:<5}')
+      disciplina = data_d[index_disciplina]['nome'] + ' / ' + str(cod_disciplina)
+      professor = data_t[index_prof]['nome'] + ' / ' + str(cod_professor)
+      print(f'{cod_turma:>5}{professor:^50}{disciplina}')
 
 

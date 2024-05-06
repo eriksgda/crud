@@ -73,17 +73,9 @@ while True: # loop do menu
         case 3: # atualizar
           print()
           operation(dict_choice_op, choice_op)
-          try:
-            choice_update = int(input('O que deseja alterar:\n' 
-                            '[0] Nome do Estudante\n'
-                            '[1] CPF do Estudante\nR:  ').strip())
-          except:
-            print('Valor inválido!')
-            break
-          print()
           read(choice, dict_choice)
           print()
-          update(choice_update, choice, dict_choice)
+          update(choice, dict_choice)
           print()
 
         case 4: # excluir

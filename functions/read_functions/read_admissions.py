@@ -4,7 +4,7 @@ def read_admission(data_json:list):
   data_s = readJson('estudantes')
   data_c = readJson('turmas')
   print(f'--------------- [MATRÍCULAS] ---------------')
-  print('Cod. Matricula          Cod. Turma              Nome Estudante')
+  print('Cod. Matricula     Cod. Turma     Estudante / Cod.')
   for x in data_json:
     cod_matricula = x['codigo']
     cod_turma = x['codigo_turma'] 
@@ -24,10 +24,10 @@ def read_admission(data_json:list):
 
     menssagem = 'Excluído/Não encontrado'
     if index_estudante == None and turma != False:
-      print(f'{cod_matricula:<5}{cod_turma:^30}{menssagem:<5}')
+      print(f'{cod_matricula:>5}{cod_turma:^30}{menssagem}')
     elif turma == False and index_estudante != None:
-      print(f'{cod_matricula:<5}{menssagem:^30}{data_s[index_estudante]['nome']:<5}')
+      print(f'{cod_matricula:>5}{menssagem:^30}{data_s[index_estudante]['nome']}/{cod_estudante}')
     elif index_estudante == None and turma == False:
-      print(f'{cod_matricula:<5}{menssagem:^30}{menssagem:<5}')
+      print(f'{cod_matricula:>5}{menssagem:^30}{menssagem}')
     else:
-      print(f'{cod_matricula:<5}{cod_turma:^30}{data_s[index_estudante]['nome']:<5}')
+      print(f'{cod_matricula:>5}{cod_turma:^30}{data_s[index_estudante]['nome']}/{cod_estudante}')
