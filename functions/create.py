@@ -1,8 +1,8 @@
-from crud.functions.json.read_json import readJson
-from crud.functions.create_functions.student_teacher import student_and_teacher
-from crud.functions.create_functions.discipline_func import discipline
-from crud.functions.create_functions.classes_func import classes
-from crud.functions.create_functions.admissions_func import admission
+from functions.json.read_json import readJson
+from functions.create_functions.student_teacher import student_and_teacher
+from functions.create_functions.discipline_func import discipline
+from functions.create_functions.classes_func import classes
+from functions.create_functions.admissions_func import admission
 
 
 def create(choice:int, dict_choice:dict): # função que adiciona (incluir) nas listas

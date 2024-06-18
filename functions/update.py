@@ -1,8 +1,8 @@
-from crud.functions.json.read_json import readJson
-from crud.functions.update_functions.update_teacher_student import update_teacher_student
-from crud.functions.update_functions.update_discipline import update_disciplines
-from crud.functions.update_functions.update_classes import update_class
-from crud.functions.update_functions.update_admissions import update_admission
+from functions.json.read_json import readJson
+from functions.update_functions.update_teacher_student import update_teacher_student
+from functions.update_functions.update_discipline import update_disciplines
+from functions.update_functions.update_classes import update_class
+from functions.update_functions.update_admissions import update_admission
 
 def update(choice:int, dict_choice:dict):
   file_name = dict_choice[choice].lower()

@@ -1,5 +1,5 @@
 import json
-from crud.functions.json.read_json import readJson
+from functions.json.read_json import readJson
 
 def delete(choice_code:int, choice:int, dict_choice:dict):
   file_name = dict_choice[choice].lower()

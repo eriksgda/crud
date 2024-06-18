@@ -1,5 +1,5 @@
 import json
-from crud.functions.json.read_json import readJson  
+from functions.json.read_json import readJson  
 
 def admission(file_name:str, datas_json:list):
   try: # verificação da resposta

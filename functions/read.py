@@ -1,8 +1,8 @@
-from crud.functions.json.read_json import readJson
-from crud.functions.read_functions.read_teacher_student import read_teacherStudent
-from crud.functions.read_functions.read_disciplines import read_discipline
-from crud.functions.read_functions.read_classes import read_class
-from crud.functions.read_functions.read_admissions import read_admission
+from functions.json.read_json import readJson
+from functions.read_functions.read_teacher_student import read_teacherStudent
+from functions.read_functions.read_disciplines import read_discipline
+from functions.read_functions.read_classes import read_class
+from functions.read_functions.read_admissions import read_admission
 
 def read(choice:int, dict_choice:dict):
   file_name = dict_choice[choice].lower()

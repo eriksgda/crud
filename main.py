@@ -1,10 +1,10 @@
 from functions.menus import menu, menu_operations, operation
-from crud.functions.create import create
+from functions.create import create
 from functions.read import read
 from functions.update import update
 from functions.delete import delete
-from crud.functions.read_functions.read_classes import read_class
-from crud.functions.json.read_json import readJson
+from functions.read_functions.read_classes import read_class
+from functions.json.read_json import readJson
 
 
 dict_choice = {

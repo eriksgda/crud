@@ -1,4 +1,4 @@
-from crud.functions.json.read_json import readJson
+from functions.json.read_json import readJson
 
 def read_class(data_json:list):
   data_t = readJson('professores')

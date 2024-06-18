@@ -1,6 +1,6 @@
 import json
-from crud.functions.json.read_json import readJson
-from crud.functions.read import read
+from functions.json.read_json import readJson
+from functions.read import read
 
 def update_class(datas_json:list, file_name:str, dict_choice:dict):
   try:
